@@ -16,7 +16,7 @@ type GuessProps = {
 
   export default function Guess({name, img, type1, type2, color, evo, gen, habitat}: GuessProps) {
 
-    const [electedPokemon, setElectedPokemon] = useState<[]>([]);
+    const [electedPokemon, setElectedPokemon] = useState<String[]>([]);
 
 async function fetchData() {
   const electedPokemonData = await getElectedPokemon();
@@ -32,7 +32,7 @@ useEffect(() =>{
 },[])
 
  function BGColor(elt:string, index:number){
-    if(elt === electedPokemon[index]){
+    if(elt.toLowerCase() === electedPokemon[index].toLowerCase()){
         return "bg-green-500"
     }else{
         return "bg-red-500"
