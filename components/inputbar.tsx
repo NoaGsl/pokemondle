@@ -42,7 +42,7 @@ export default function InputBar() {
     <div className="flex justify-center flex-col">
       <h1 className="text-3xl p-4">Devinez le pokemon</h1>
       <div className="flex justify-center">
-        <input onFocus={() => {setVisible(true)}} onMouseDown={() => setVisible(false)} type="text" className="flex border-2 border-black text-black w-1/4" onChange={(e) => setInput(e.target.value)} value={input}/>
+        <input onFocus={() => {setVisible(true)}} onBlur={() => setVisible(false)}  type="text" className="flex border-2 border-black text-black w-1/4" onChange={(e) => setInput(e.target.value)} value={input}/>
       </div>
       <div className="flex justify-center">
         <div className="grid grid-cols-[repeat(8,100px)] gap-2 p-2 text-l text-center justify-center items-center">
@@ -51,7 +51,7 @@ export default function InputBar() {
       </div>
       {visible ? 
       <div className="absolute m-auto top-24 right-0 left-0 bg-blue-500 w-1/4 flex-col z-40 overflow-y-scroll h-1/6">
-        {filteredPokemonList.map((name,index) => <p className="hover:bg-gray-500 hover:cursor-pointer" onClick={() => takeGuess(name)} key={index}>{name}</p>)}
+        {filteredPokemonList.map((name,index) => <p className="hover:bg-gray-500 hover:cursor-pointer" onMouseDown={() => takeGuess(name)} key={index}>{name}</p>)}
       </div> : <></>}
       <div className="flex justify-center">
         <div className="w-full justify-center">
