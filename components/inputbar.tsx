@@ -40,6 +40,7 @@ export default function InputBar() {
     return filterPokemonList();
     }
     loadContent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[input])
 
   return (
