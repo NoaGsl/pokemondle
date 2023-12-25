@@ -28,7 +28,7 @@ export default function InputBar() {
     setVisible(false);
     const data = await fetch(`/api/pokemon?name=${id}`);
     const json = await data.json();
-    setGuessList([...guesslist,<Guess name={name} img={json[1]} type1={json[2]} type2={json[3]} color={json[4]} evo={json[5]} gen={json[6]} habitat={json[7]}/>]);
+    setGuessList([...guesslist,<Guess name={name} img={json[1]} type1={json[2]} type2={json[3]} color={json[4]} evo={json[5]} gen={json[6]} habitat={json[7]} number={guesslist.length+1}/>]);
   }
 
   useEffect(() =>{
@@ -54,8 +54,8 @@ export default function InputBar() {
         </div>
       </div>
       {visible && input != "" ? 
-      <div className={`absolute m-auto top-24 right-0 left-0 bg-blue-500 w-1/4 flex-col z-40 overflow-y-scroll max-h-24`}>
-        {filteredPokemonList.map((name,index) => <p className="hover:bg-gray-500 hover:cursor-pointer h-5" onMouseDown={() => takeGuess((pokemonList.map(e => e.name.toLowerCase()).indexOf(name.toLowerCase())+1),name.toLowerCase())} key={index}>{name}</p>)}
+      <div className={`absolute m-auto top-24 right-0 left-0 bg-blue-500 w-1/4 flex-col z-40 overflow-y-scroll max-h-28`}>
+        {filteredPokemonList.map((name,index) => <p className="hover:bg-gray-500 hover:cursor-pointer h-5 p-px" onMouseDown={() => takeGuess((pokemonList.map(e => e.name.toLowerCase()).indexOf(name.toLowerCase())+1),name.toLowerCase())} key={index}>{name}</p>)}
       </div> : <></>}
       <div className="flex justify-center">
         <div className="w-full justify-center">

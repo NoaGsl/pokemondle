@@ -1,6 +1,7 @@
 import { getElectedPokemon } from "@/components/pokemon_function";
 import Image from "next/image";
 import { useEffect,useState } from "react";
+import VictoryScreen from "./victoryScreen";
 
 type GuessProps = {
     name: string;
@@ -11,10 +12,11 @@ type GuessProps = {
     evo: string;
     gen: string;
     habitat: string;
+    number: number;
   };
   
 
-  export default function Guess({name, img, type1, type2, color, evo, gen, habitat}: GuessProps) {
+  export default function Guess({name, img, type1, type2, color, evo, gen, habitat, number}: GuessProps) {
 
     const [electedPokemon, setElectedPokemon] = useState<String[]>([]);
 
@@ -36,6 +38,14 @@ useEffect(() =>{
         return "bg-green-500"
     }else{
         return "bg-red-500"
+    }
+}
+
+const rightGuess = (elt:string) => {
+    if(elt.toLowerCase() === electedPokemon[0].toLowerCase()){
+        return true;
+    }else{
+        return false;
     }
 }
 
@@ -69,6 +79,7 @@ useEffect(() =>{
                     <p>{habitat}</p>
                 </div>
             </div>
+            {rightGuess(name) ? <VictoryScreen pokemonName={name} nbGuess={number} img={img}/> : <></>}
         </div>
     );
 }
