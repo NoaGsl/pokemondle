@@ -41,6 +41,26 @@ useEffect(() =>{
     }
 }
 
+    function type1Color(type:string){
+        if (electedPokemon[2].toLowerCase() === type.toLowerCase()){
+            return "bg-green-500"
+        }
+        if (electedPokemon[3].toLowerCase() === type.toLowerCase()){
+            return "bg-orange-500"
+        }
+        return "bg-red-500"
+    }
+
+    function type2Color(type:string){
+        if (electedPokemon[3].toLowerCase() === type.toLowerCase()){
+            return "bg-green-500"
+        }
+        if (electedPokemon[2].toLowerCase() === type.toLowerCase()){
+            return "bg-orange-500"
+        }
+        return "bg-red-500"
+    }
+
 const rightGuess = (elt:string) => {
     if(elt.toLowerCase() === electedPokemon[0].toLowerCase()){
         return true;
@@ -60,10 +80,10 @@ const rightGuess = (elt:string) => {
                 <div className={BGColor(img,1)+" w-[100px] h-[100px] flex items-center justify-center"}>
                     <Image src={img} alt={name} width={100} height={100}/>
                 </div>
-                <div className={BGColor(type1,2)+" w-[100px] h-[100px] flex items-center justify-center"}>
+                <div className={type1Color(type1)+" w-[100px] h-[100px] flex items-center justify-center"}>
                     <p>{type1}</p>
                 </div>
-                <div className={BGColor(type2,3)+" w-[100px] h-[100px] flex items-center justify-center"}>
+                <div className={type2Color(type2)+" w-[100px] h-[100px] flex items-center justify-center"}>
                     <p>{type2}</p>
                 </div>
                 <div className={BGColor(color,4)+" w-[100px] h-[100px] flex items-center justify-center"}>
