@@ -32,11 +32,12 @@ export async function GET (req : NextRequest){
                 const EvoChain = await fetchEvoChain.json()
                 if(EvoChain.chain.species.name === pokemon.name){
                         return "1";
-                }else if((EvoChain.chain.evolves_to[0].species.name) === pokemon.name){
-                        return "2"
-                }else{
-                        return "3"
+                }for (let i = 0; i < EvoChain.chain.evolves_to.length; i++){
+                        if(EvoChain.chain.evolves_to[i].species.name === pokemon.name){
+                                return "2"
+                        }
                 }
+                return "3"
         }
 
         async function getHabitat(){
