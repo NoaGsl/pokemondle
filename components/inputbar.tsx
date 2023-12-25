@@ -28,7 +28,7 @@ export default function InputBar() {
     setVisible(false);
     const data = await fetch(`/api/pokemon?name=${id}`);
     const json = await data.json();
-    setGuessList([...guesslist,<Guess name={name} img={json[1]} type1={json[2]} type2={json[3]} color={json[4]} evo={json[5]} gen={json[6]} habitat={json[7]} number={guesslist.length+1}/>]);
+    setGuessList([...guesslist,<Guess key={guesslist.length+1} name={name} img={json[1]} type1={json[2]} type2={json[3]} color={json[4]} evo={json[5]} gen={json[6]} habitat={json[7]} number={guesslist.length+1}/>]);
   }
 
   useEffect(() =>{
@@ -40,7 +40,7 @@ export default function InputBar() {
     return filterPokemonList();
     }
     loadContent();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+// eslint-disable-next-line react-hooks/exhaustive-deps
   },[input])
 
   return (
@@ -51,7 +51,7 @@ export default function InputBar() {
       </div>
       <div className="flex justify-center">
         <div className="grid grid-cols-[repeat(8,100px)] gap-2 p-2 text-l text-center justify-center items-center">
-            {categories.map((categorie,index) => <p className="underline underline-offset-8" key={index}>{categorie}</p>)}
+            {categories.map((categorie) => <p className="underline underline-offset-8" key={categorie}>{categorie}</p>)}
         </div>
       </div>
       {visible && input != "" ? 
