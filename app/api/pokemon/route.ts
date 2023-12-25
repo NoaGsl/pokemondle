@@ -4,7 +4,6 @@ export async function GET (req : NextRequest){
 
         const params = req.nextUrl.searchParams
         const guessName = params.values().next().value
-        console.log(guessName)
 
         const fetchPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${guessName}`,{cache : 'no-store'})
         const pokemon = await fetchPokemon.json()
