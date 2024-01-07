@@ -15,7 +15,7 @@ export default function Home() {
   },[])
 
   return (
-    <div className="flex flex-col justify-center text-center w-full">
+    <div className="flex flex-col justify-center h-screen bg-black text-center w-full">
       <InputBar />
     </div>
   )
