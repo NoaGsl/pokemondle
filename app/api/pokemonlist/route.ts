@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function GET (){
 
         const names = [];
-        for(let i = 1; i < 809; i++){
+        for(let i = 1; i < 722; i++){
                 const fetchPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`,{cache:'force-cache'})
                 const pokemon = await fetchPokemon.json()
                 if(pokemon.names[4] != undefined && pokemon.names[4].language.name === "fr"){
