@@ -84,10 +84,6 @@ export async function GET (req : NextRequest){
                 return color.names[3].name;
         }
 
-        async function getName(){
-                
-        }
-
         const name = species.names[4].name;
         const img = pokemon.sprites.front_default;
         
